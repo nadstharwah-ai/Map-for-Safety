@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10223f">
+
+<title>MAP FOR SAFETY | Geodetic Engineering Advocacy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&display=swap');
+:root{--navy:#10223f;--blue:#2878e5;--sky:#6bd9f0;--gold:#ffd45a;--green:#45c88b;--red:#f36b70;--ink:#17243b;--muted:#66758d;--paper:#f3f7ff;--white:#fff;--shadow:0 18px 50px #10294b16}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:Nunito,Arial,sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden}
+a{color:inherit}button{font:inherit}
+.topline{height:6px;background:linear-gradient(90deg,var(--sky),var(--blue),#8c78ff,var(--gold))}
+header{position:relative;overflow:hidden;color:white;background:linear-gradient(125deg,#0c1a33 0%,#153c6c 58%,#176e91 100%);padding:22px max(5vw,22px) 88px}
+header:before{content:"";position:absolute;inset:0;opacity:.12;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,black,transparent)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none}.orb.one{width:340px;height:340px;right:-70px;top:-120px;background:#6bd9f022;border:1px solid #ffffff22}.orb.two{width:170px;height:170px;right:30%;bottom:-110px;background:#ffd45a18}
+nav{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto}
+.logo{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:1000;letter-spacing:1.3px}.logo-mark{width:38px;height:38px;border-radius:12px;background:var(--gold);color:var(--navy);display:grid;place-items:center;box-shadow:0 5px 0 #bb9134;font-size:20px}.logo span{color:var(--gold)}
+nav .links{display:flex;gap:27px}nav a{text-decoration:none;color:#e7f4ff;font-size:13px;font-weight:900;transition:.2s}nav a:hover{color:var(--gold)}
+.hero{position:relative;z-index:2;max-width:1200px;margin:76px auto 0;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:9px;border:1px solid #ffffff38;background:#ffffff12;padding:9px 13px;border-radius:40px;color:#a9eff8;font-size:11px;font-weight:1000;letter-spacing:1.7px}
+.kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px #ffd45a25}
+h1{font-size:clamp(48px,6.5vw,82px);line-height:.94;letter-spacing:-3px;margin:23px 0 22px;font-weight:1000;text-shadow:0 5px 0 #08162a}
+h1 em{font-style:normal;color:var(--gold)}.hero-copy{font-size:17px;line-height:1.8;color:#d9eafa;max-width:590px;margin:0}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:29px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:12px;background:var(--gold);color:#17243b;text-decoration:none;font-weight:1000;box-shadow:0 6px 0 #b78c2b;transition:.2s}.btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 #b78c2b}
+.btn.ghost{background:#ffffff14;color:white;border:1px solid #ffffff4d;box-shadow:none}.btn.ghost:hover{background:#ffffff24}
+.hero-scene{position:relative;perspective:900px}.scene-frame{position:relative;background:#ffffff16;border:1px solid #ffffff40;padding:12px;border-radius:25px;box-shadow:0 30px 70px #06132670;transform:rotateY(-7deg) rotateX(3deg);transition:.4s}.scene-frame:hover{transform:rotateY(0) rotateX(0) translateY(-5px)}
+.scene-frame svg{display:block;width:100%;border-radius:16px}
+.float-tag{position:absolute;background:white;color:var(--ink);border-radius:13px;padding:10px 14px;box-shadow:0 12px 30px #07162b40;font-size:12px;font-weight:1000}.float-tag.safe{right:-20px;top:25px}.float-tag.pin{left:-20px;bottom:35px}.float-tag b{color:var(--green)}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#b9d9f2;font-weight:900}
+main{max-width:1200px;margin:-35px auto 0;padding:0 22px;position:relative;z-index:4}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat{background:white;padding:21px 23px;border-radius:17px;box-shadow:var(--shadow);display:flex;align-items:center;gap:15px;border:1px solid #e8eef8}
+.stat-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:23px;background:#eaf4ff}.stat:nth-child(2) .stat-icon{background:#fff5db}.stat:nth-child(3) .stat-icon{background:#e5f9ef}
+.stat strong{display:block;font-size:19px;font-weight:1000;color:var(--navy)}.stat span{font-size:12px;color:var(--muted);font-weight:700}
+section{padding:76px 0}.section-tag{color:var(--blue);font-size:11px;font-weight:1000;letter-spacing:2.3px;display:flex;align-items:center;gap:9px}.section-tag:before{content:"";width:23px;height:3px;background:var(--gold);border-radius:3px}
+h2{font-size:clamp(30px,4vw,43px);line-height:1.1;margin:12px 0;color:var(--navy);font-weight:1000;letter-spacing:-1px}.intro{color:var(--muted);line-height:1.8;max-width:760px;font-size:15px;margin:0}
+.map-layout{display:grid;grid-template-columns:1.55fr .7fr;gap:20px;margin-top:28px;align-items:stretch}
+.map-card,.side-card,.info-card{background:white;border-radius:21px;padding:20px;box-shadow:var(--shadow);border:1px solid #e8eef8}
+.map-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.map-head h3{margin:0;font-size:17px;font-weight:1000;color:var(--navy)}.badge{background:#eaf4ff;color:#2166b5;padding:8px 12px;border-radius:30px;font-size:10px;font-weight:1000;letter-spacing:1px;white-space:nowrap}
+.map-wrap{background:#dcefdc;border-radius:15px;overflow:hidden;border:1px solid #c7dfcb;box-shadow:inset 0 2px 8px #193b2010}.map-wrap svg{display:block;width:100%;height:auto}
+.map-tools{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.layer{border:1px solid #e2eaf5;border-radius:10px;padding:10px 14px;background:#f4f7fc;color:#40516c;font-size:12px;font-weight:1000;cursor:pointer;transition:.2s}.layer:hover{transform:translateY(-2px)}.layer.active{background:var(--navy);color:white;border-color:var(--navy);box-shadow:0 4px 0 #071329}
+#mapMessage{font-size:12px;color:var(--muted);margin:13px 0 0;min-height:18px;font-weight:700}
+.side-card h3{margin:4px 0 13px;color:var(--navy);font-weight:1000}.side-card p{font-size:13px;color:var(--muted);line-height:1.75}
+.legend{display:grid;gap:14px;margin:18px 0 25px}.legend div{display:flex;align-items:center;gap:10px;font-size:12px;color:#52617a;font-weight:800}.dot{width:14px;height:14px;border-radius:5px;display:inline-block;box-shadow:0 2px 5px #10223f20}
+.alert{padding:14px;border-radius:12px;background:#fff4e9;border:1px solid #ffe0c1;color:#94511b;font-size:12px;line-height:1.65;margin-top:17px}.alert strong{color:#a84c0b}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:28px}
+.info-card{padding:25px;position:relative;overflow:hidden;transition:.25s}.info-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px #10294b20}.info-card:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:#eaf4ff;right:-35px;top:-40px}.icon{position:relative;z-index:1;width:54px;height:54px;border-radius:16px;background:#eaf4ff;display:grid;place-items:center;font-size:26px}.info-card:nth-child(2) .icon{background:#fff2e8}.info-card:nth-child(3) .icon{background:#e8f9ef}.info-card h3{margin:17px 0 8px;font-size:17px;font-weight:1000}.info-card p{color:var(--muted);font-size:13px;line-height:1.8;margin:0}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:28px}.step{background:white;border:1px solid #e8eef8;border-radius:18px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.step:before{counter-increment:step;content:"0" counter(step);font-weight:1000;color:#d5e6fc;font-size:44px;line-height:1}.step h3{margin:13px 0 7px;font-size:17px;color:var(--navy);font-weight:1000}.step p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}
+.callout{position:relative;overflow:hidden;background:linear-gradient(120deg,#164b80,#101d35);color:white;border-radius:24px;padding:43px;margin:10px 0 75px;box-shadow:0 25px 60px #112c4c28}.callout:after{content:"🧭";position:absolute;right:45px;top:15px;font-size:120px;opacity:.12;transform:rotate(-15deg)}.callout h2{color:white;max-width:650px}.callout p{color:#d9e8fa;line-height:1.8;max-width:730px;font-size:14px;position:relative;z-index:1}.callout .btn{position:relative;z-index:1}
+footer{background:#0b172c;color:#a9bad2;text-align:center;padding:32px 20px;font-size:11px;line-height:1.9}footer strong{color:white;font-size:15px;letter-spacing:1.5px}footer .footline{width:45px;height:3px;background:var(--gold);margin:0 auto 14px;border-radius:5px}
+.fade{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.hero,.map-layout{grid-template-columns:1fr}.hero{margin-top:48px}.hero-scene{max-width:650px;margin:10px auto 0}.grid3,.steps{grid-template-columns:1fr}.float-tag.safe{right:0}.float-tag.pin{left:0}section{padding:55px 0}}
+@media(max-width:600px){header{padding-bottom:75px}.hero{gap:28px}h1{font-size:53px}.hero-copy{font-size:15px}nav .links{gap:12px}nav a{font-size:11px}.logo{font-size:15px}.logo-mark{width:32px;height:32px}.stats{grid-template-columns:1fr;gap:10px}.stat{padding:15px}.map-card,.side-card{padding:13px}.map-head h3{font-size:13px}.badge{font-size:9px;padding:7px}.callout{padding:27px 22px}.callout:after{right:10px;font-size:75px}.scroll-hint{display:none}}
+
+/* Dark, game-inspired visual theme: removes the bright white AI-template look */
+body{background:#172638;color:#eaf2fb}
+main{color:#eaf2fb}
+.stats .stat,.map-card,.side-card,.info-card,.step{
+ background:#24374d;
+ border:1px solid #354c64;
+ box-shadow:0 12px 30px #07132155;
+}
+.stat strong,.map-head h3,.side-card h3,.info-card h3,.step h3,h2{color:#f2f6fc}
+.stat span,.intro,.side-card p,.legend div,.info-card p,.step p{color:#b4c3d5}
+.section-tag{color:#75d9ed}
+.badge{background:#304c68;color:#bfeeff}
+.layer{background:#304257;color:#dce8f5;border-color:#40566e}
+.layer.active{background:#ffd45a;color:#172638;border-color:#ffd45a;box-shadow:0 4px 0 #a77c22}
+#mapMessage{color:#b4c3d5}
+.alert{background:#493b2b;border-color:#715437;color:#ffdaa5}
+.alert strong{color:#ffe2b7}
+.stat-icon{background:#304c68}
+.stat:nth-child(2) .stat-icon{background:#51452e}
+.stat:nth-child(3) .stat-icon{background:#294c42}
+.info-card .icon{background:#304c68}
+.info-card:nth-child(2) .icon{background:#51402f}
+.info-card:nth-child(3) .icon{background:#294c42}
+.step:before{color:#49627e}
+.callout{border:1px solid #38516c}
+footer{border-top:1px solid #30445c}
+@media(max-width:600px){.stat{background:#24374d}}
+
+
+.town-map{background:#426e56;border:1px solid #557e69;padding:7px}.town-map svg{width:100%;height:auto;display:block;border-radius:10px}.map-tools .layer{cursor:pointer}.map-tools .layer:not(.active){opacity:.55;background:#182b40;color:#b8c7d8;border-color:#40546b;box-shadow:none}#mapMessage{color:#b8c7d8;line-height:1.6}
+
+/* Live Blocktown simulation controls and motion */
+.live-badge{display:inline-flex;align-items:center;gap:8px;background:#173e35;color:#9effc9;border:1px solid #2c765d}
+.live-badge i{width:8px;height:8px;border-radius:50%;background:#63f5a6;box-shadow:0 0 0 0 #63f5a688;animation:livePulse 1.5s infinite}
+@keyframes livePulse{70%{box-shadow:0 0 0 8px #63f5a600}100%{box-shadow:0 0 0 0 #63f5a600}}
+.sim-bar{display:flex;align-items:center;gap:17px;flex-wrap:wrap;margin:-4px 0 13px;padding:10px 12px;border-radius:11px;background:#14283b;border:1px solid #38516a;color:#b8c9dc;font-size:11px}
+.sim-bar strong{color:#f2f6fc}.sim-toggle{margin-left:auto;border:1px solid #54708b;background:#203a52;color:#f2f6fc;border-radius:8px;padding:7px 11px;font-weight:900;font-size:11px;cursor:pointer}
+.hazard-pulse{animation:hazardGlow 2.8s ease-in-out infinite alternate}@keyframes hazardGlow{from{opacity:.78}to{opacity:1}}
+#trafficLayer{pointer-events:none}
+@media(max-width:600px){.sim-bar{gap:9px;font-size:10px}.sim-toggle{margin-left:0}}
+
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+<div class="orb one"></div><div class="orb two"></div>
+<nav>
+ <div class="logo"><div class="logo-mark">⌖</div><div>MAP <span>FOR SAFETY</span></div></div>
+ <div class="links"><a href="#map">Explore Map</a><a href="#mission">Our Mission</a><a href="#action">Take Action</a></div>
+</nav>
+<div class="hero">
+ <div class="fade">
+  <div class="kicker">GEODETIC ENGINEERING • COMMUNITY ADVOCACY</div>
+  <h1>KNOW YOUR<br><em>MAP.</em> KNOW<br>YOUR WAY.</h1>
+  <p class="hero-copy">In an emergency, every second matters. Discover how maps, location data, and safer-route planning can help people understand their surroundings and prepare for danger.</p>
+  <div class="actions"><a class="btn" href="#map">Explore Safety Map <span>→</span></a><a class="btn ghost" href="#mission">Discover the mission</a></div>
+ </div>
+ <div class="hero-scene fade">
+  <div class="scene-frame">
+  <svg viewBox="0 0 600 390" role="img" aria-label="Colorful block-style town with homes, school, clinic, roads and green safe zone">
+   <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8edcf2"/><stop offset="1" stop-color="#d8f4ff"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="4" flood-opacity=".18"/></filter></defs>
+   <rect width="600" height="390" rx="15" fill="url(#sky)"/><circle cx="510" cy="55" r="29" fill="#ffe58b"/>
+   <path d="M0 230H600V390H0Z" fill="#82d69b"/><path d="M0 275H600M0 335H600M130 230V390M360 230V390" stroke="#5b6878" stroke-width="42"/><path d="M0 275H600M0 335H600M130 230V390M360 230V390" stroke="#fff0b0" stroke-width="2" stroke-dasharray="13 14"/>
+   <g filter="url(#shadow)"><rect x="35" y="125" width="105" height="105" fill="#f3b34e"/><path d="M25 130L87 82L150 130Z" fill="#d65e52"/><rect x="52" y="155" width="25" height="28" fill="#8bdcf3"/><rect x="96" y="155" width="25" height="28" fill="#8bdcf3"/><rect x="77" y="190" width="27" height="40" fill="#986e4e"/>
+   <rect x="195" y="94" width="125" height="136" fill="#e9edf4"/><rect x="185" y="80" width="145" height="22" fill="#3477c6"/><rect x="214" y="122" width="27" height="29" fill="#83d8f2"/><rect x="274" y="122" width="27" height="29" fill="#83d8f2"/><rect x="245" y="175" width="28" height="55" fill="#9a795a"/>
+   <rect x="405" y="142" width="110" height="88" fill="#ed8d82"/><path d="M395 145L460 103L525 145Z" fill="#b74e4b"/><rect x="423" y="165" width="25" height="28" fill="#bcecff"/><rect x="470" y="165" width="25" height="28" fill="#bcecff"/></g>
+   <g font-size="11" font-weight="900" fill="#21466b"><text x="86" y="246" text-anchor="middle">HOMES</text><text x="258" y="246" text-anchor="middle">SCHOOL</text><text x="460" y="246" text-anchor="middle">CLINIC</text></g>
+   <path d="M285 310L285 275L360 275L360 250L490 250L490 200" stroke="#168e65" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="12 8"/><circle cx="490" cy="200" r="13" fill="#45c88b" stroke="white" stroke-width="4"/>
+   <g transform="translate(240 283)"><rect x="0" y="0" width="22" height="25" rx="4" fill="#f4c39d"/><rect x="-5" y="25" width="32" height="31" rx="4" fill="#2878e5"/><rect x="0" y="55" width="10" height="18" fill="#26354a"/><rect x="15" y="55" width="10" height="18" fill="#26354a"/></g>
+   <rect x="390" y="22" width="180" height="55" rx="12" fill="white" filter="url(#shadow)"/><circle cx="412" cy="49" r="10" fill="#45c88b"/><path d="M407 49l4 4 7-9" stroke="white" stroke-width="2.5" fill="none"/><text x="430" y="45" font-size="11" font-weight="900" fill="#17304f">SAFE DESTINATION</text><text x="430" y="60" font-size="9" fill="#71819a">Community assembly area</text>
+   <g fill="#4eae71"><circle cx="160" cy="80" r="17"/><rect x="155" y="80" width="10" height="28" fill="#8b6a48"/><circle cx="350" cy="170" r="16"/><rect x="346" y="170" width="8" height="26" fill="#8b6a48"/><circle cx="550" cy="290" r="18"/><rect x="546" y="290" width="8" height="30" fill="#8b6a48"/></g>
+   <text x="20" y="30" font-size="12" font-weight="900" fill="#24617d" letter-spacing="2">ZAMBOANGA CITY</text>
+  </svg></div>
+  <div class="float-tag safe">🟢 <b>SAFE ZONE</b><br><small>Know where to go</small></div>
+  <div class="float-tag pin">📍 YOUR LOCATION<br><small>Every place matters</small></div>
+ </div>
+</div>
+<div class="scroll-hint">SCROLL TO EXPLORE ↓</div>
+</header>
+<main>
+<div class="stats fade">
+ <div class="stat"><div class="stat-icon">🗺️</div><div><strong>MAP IT</strong><span>Understand your surroundings</span></div></div>
+ <div class="stat"><div class="stat-icon">⚠️</div><div><strong>SPOT IT</strong><span>Recognize possible hazards</span></div></div>
+ <div class="stat"><div class="stat-icon">🤝</div><div><strong>SHARE IT</strong><span>Help others prepare</span></div></div>
+</div>
+<section id="map">
+ <div class="section-tag">LIVE ROBLOX-STYLE TOWN SIMULATION</div><h2>Welcome to Blocktown.</h2>
+ <p class="intro">Explore a living block-style town. Traffic moves, hazard zones pulse, and you can select places to learn about them. The clock and activity are simulated for this demonstration—not real emergency monitoring.</p>
+ <div class="map-layout">
+  <div class="map-card">
+   <div class="map-head"><h3>🏘️ BLOCKTOWN • COMMUNITY SAFETY MAP</h3><span class="badge live-badge"><i></i> LIVE SIMULATION</span></div>
+   <div class="sim-bar"><span>🕒 <strong id="townClock">--:--:--</strong></span><span>🚗 <strong>Traffic active</strong></span><span>🌤️ <strong id="townWeather">Clear demo weather</strong></span><button id="simToggle" class="sim-toggle" type="button">⏸ Pause</button></div>
+   <div class="map-wrap town-map">
+    <svg id="townMap" viewBox="0 0 960 590" role="img" aria-label="Roblox-inspired block town map showing buildings, roads, river, flood and fire hazard areas, emergency services and evacuation center">
+     <defs>
+      <pattern id="grassGrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/></pattern>
+      <filter id="blockShadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="3" flood-color="#091522" flood-opacity=".35"/></filter>
+      <pattern id="waterLines" width="34" height="18" patternUnits="userSpaceOnUse"><path d="M0 9q8-7 17 0t17 0" fill="none" stroke="#b8f2ff" stroke-opacity=".55" stroke-width="2"/></pattern>
+     </defs>
+     <!-- town ground -->
+     <rect width="960" height="590" rx="14" fill="#6eae75"/><rect width="960" height="590" rx="14" fill="url(#grassGrid)"/>
+     <!-- park and fields -->
+     <rect data-place="Central Park" x="35" y="35" width="190" height="120" rx="12" fill="#4c9c65" stroke="#a5d88a" stroke-width="4"/><text x="130" y="55" fill="#e9ffd9" font-size="15" font-weight="900" text-anchor="middle">CENTRAL PARK</text>
+     <g fill="#276c4a"><circle cx="75" cy="95" r="20"/><circle cx="185" cy="92" r="22"/><circle cx="130" cy="125" r="17"/></g><g fill="#9c7049"><rect x="71" y="108" width="8" height="20"/><rect x="181" y="107" width="8" height="22"/><rect x="126" y="136" width="8" height="15"/></g>
+     <!-- river and riverbank -->
+     <path d="M770 -10 C700 85 820 150 750 240 S800 400 710 610" fill="none" stroke="#b5c99a" stroke-width="100"/><path d="M770 -10 C700 85 820 150 750 240 S800 400 710 610" fill="none" stroke="#269bc5" stroke-width="82"/><path d="M770 -10 C700 85 820 150 750 240 S800 400 710 610" fill="none" stroke="url(#waterLines)" stroke-width="78"/>
+     <text x="815" y="330" fill="#e5fbff" font-size="15" font-weight="900" transform="rotate(77 815 330)">BLUE RIVER</text>
+     <!-- roads -->
+     <g fill="#596b7b" stroke="#9aabb7" stroke-width="3"><rect x="0" y="245" width="960" height="76"/><rect x="290" y="0" width="76" height="590"/><rect x="0" y="430" width="690" height="64"/><rect x="800" y="430" width="160" height="64"/><rect x="505" y="0" width="60" height="245"/><rect x="505" y="321" width="60" height="269"/></g>
+     <g stroke="#f7e9a4" stroke-width="4" stroke-dasharray="18 16" fill="none"><path d="M0 283H960M328 0V590M0 462H690M800 462H960M535 0V245M535 321V590"/></g>
+     <!-- bridge -->
+     <rect x="704" y="250" width="98" height="68" rx="5" fill="#9a7652" stroke="#f0d09b" stroke-width="5"/><path d="M712 260V310M732 260V310M752 260V310M772 260V310M792 260V310" stroke="#f5ddb3" stroke-width="5"/><text x="754" y="240" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">RIVER BRIDGE</text>
+     <!-- neighborhood buildings -->
+     <g filter="url(#blockShadow)">
+      <!-- houses upper left -->
+      <g><rect x="45" y="180" width="75" height="54" fill="#f4bd62"/><path d="M37 183L82 145L128 183Z" fill="#c95f50"/><rect x="58" y="195" width="16" height="18" fill="#9be4f2"/><rect x="92" y="195" width="16" height="18" fill="#9be4f2"/><rect x="76" y="210" width="18" height="24" fill="#815b45"/>
+      <rect x="145" y="180" width="75" height="54" fill="#e8a4a0"/><path d="M137 183L182 145L228 183Z" fill="#8d5264"/><rect x="158" y="195" width="16" height="18" fill="#9be4f2"/><rect x="192" y="195" width="16" height="18" fill="#9be4f2"/><rect x="176" y="210" width="18" height="24" fill="#815b45"/></g>
+      <!-- school -->
+      <g data-place="School"><rect x="395" y="75" width="125" height="130" fill="#f1d56d"/><rect x="385" y="65" width="145" height="18" fill="#d18b3d"/><rect x="420" y="100" width="28" height="30" fill="#83d9f2"/><rect x="468" y="100" width="28" height="30" fill="#83d9f2"/><rect x="442" y="155" width="32" height="50" fill="#966746"/><rect x="444" y="35" width="27" height="30" fill="#e34e50"/><text x="457" y="54" font-size="14" text-anchor="middle" fill="white" font-weight="900">★</text></g>
+      <!-- market -->
+      <g data-place="Market"><rect x="600" y="70" width="105" height="125" fill="#e99b63"/><rect x="590" y="60" width="125" height="20" fill="#b94d45"/><rect x="615" y="100" width="24" height="28" fill="#9ee5f3"/><rect x="665" y="100" width="24" height="28" fill="#9ee5f3"/><rect x="638" y="145" width="28" height="50" fill="#805a43"/><path d="M590 82H715" stroke="#ffe2a1" stroke-width="9"/></g>
+      <!-- homes lower left -->
+      <g><rect x="50" y="350" width="80" height="58" fill="#82b7e8"/><path d="M40 352L90 310L140 352Z" fill="#476eac"/><rect x="65" y="366" width="18" height="19" fill="#b9f1ff"/><rect x="99" y="366" width="18" height="19" fill="#b9f1ff"/><rect x="83" y="385" width="18" height="23" fill="#795943"/>
+      <rect x="165" y="350" width="80" height="58" fill="#f2a86b"/><path d="M155 352L205 310L255 352Z" fill="#b85a4d"/><rect x="180" y="366" width="18" height="19" fill="#b9f1ff"/><rect x="214" y="366" width="18" height="19" fill="#b9f1ff"/><rect x="198" y="385" width="18" height="23" fill="#795943"/></g>
+      <!-- clinic / hospital -->
+      <g data-place="Hospital"><rect x="390" y="350" width="130" height="75" fill="#e8f0f4"/><rect x="380" y="340" width="150" height="18" fill="#4d9fc6"/><rect x="442" y="380" width="27" height="45" fill="#7592a5"/><rect x="405" y="368" width="23" height="22" fill="#87d8f0"/><rect x="482" y="368" width="23" height="22" fill="#87d8f0"/><rect x="445" y="355" width="18" height="28" fill="#e34e50"/><rect x="440" y="360" width="28" height="18" fill="#e34e50"/></g>
+      <!-- police station -->
+      <g data-place="Police Station"><rect x="585" y="350" width="92" height="72" fill="#8bb3d8"/><rect x="575" y="340" width="112" height="18" fill="#355f91"/><rect x="620" y="380" width="22" height="42" fill="#455a70"/><rect x="598" y="365" width="18" height="18" fill="#c6efff"/><rect x="648" y="365" width="18" height="18" fill="#c6efff"/></g>
+      <!-- fire station -->
+      <g data-place="Fire Station"><rect x="45" y="515" width="120" height="58" fill="#e87955"/><rect x="35" y="505" width="140" height="18" fill="#a73c36"/><rect x="80" y="535" width="48" height="38" fill="#5c3d39"/><rect x="92" y="540" width="24" height="33" fill="#ffd36a"/><rect x="87" y="515" width="36" height="13" fill="#f4e9d2"/></g>
+      <!-- evacuation center -->
+      <g data-place="Evacuation Center"><rect x="390" y="515" width="145" height="58" fill="#62c99a"/><rect x="380" y="505" width="165" height="18" fill="#267e61"/><rect x="450" y="535" width="27" height="38" fill="#456b5c"/><rect x="410" y="530" width="24" height="20" fill="#bdf3dc"/><rect x="490" y="530" width="24" height="20" fill="#bdf3dc"/><rect x="445" y="475" width="34" height="30" fill="#f2fff8"/><path d="M462 480V500M452 490H472" stroke="#269c69" stroke-width="6"/></g>
+     </g>
+     <!-- labels -->
+     <g fill="#f7fbff" font-size="13" font-weight="1000" paint-order="stroke" stroke="#26394b" stroke-width="3"><text x="130" y="257" text-anchor="middle">RESIDENTIAL</text><text x="458" y="222" text-anchor="middle">SCHOOL</text><text x="652" y="212" text-anchor="middle">MARKET</text><text x="455" y="445" text-anchor="middle">HOSPITAL</text><text x="630" y="442" text-anchor="middle">POLICE</text><text x="105" y="585" text-anchor="middle">FIRE STATION</text><text x="462" y="585" text-anchor="middle">EVACUATION CENTER</text></g>
+     <!-- hazard zones toggle -->
+     <g id="hazardLayer" class="hazard-pulse">
+      <path d="M0 0H255V235H0Z" fill="#e94b4b" opacity=".19" stroke="#ff5555" stroke-width="5" stroke-dasharray="12 8"/><rect x="20" y="18" width="165" height="30" rx="8" fill="#9c2828"/><text x="102" y="38" fill="white" font-size="14" font-weight="1000" text-anchor="middle">🔥 FIRE RISK AREA</text>
+      <path d="M580 0H960V240H580Z" fill="#f2a735" opacity=".16" stroke="#ffcb56" stroke-width="5" stroke-dasharray="12 8"/><rect x="755" y="18" width="175" height="30" rx="8" fill="#a56816"/><text x="842" y="38" fill="white" font-size="14" font-weight="1000" text-anchor="middle">🌊 FLOOD-PRONE*</text>
+      <path d="M0 420H285V590H0Z" fill="#ed6a45" opacity=".16" stroke="#ff9b68" stroke-width="5" stroke-dasharray="12 8"/><rect x="15" y="440" width="190" height="30" rx="8" fill="#9d452b"/><text x="110" y="460" fill="white" font-size="13" font-weight="1000" text-anchor="middle">⚠️ HAZARD ZONE*</text>
+      <g font-size="29"><text x="215" y="100">🔥</text><text x="690" y="135">🌊</text><text x="220" y="470">⚠️</text><text x="745" y="390">🌊</text></g>
+     </g>
+     <!-- safe route toggle -->
+     <g id="routeLayer"><path d="M455 425L455 462L535 462L535 505L462 505L462 535" fill="none" stroke="#073f2c" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/><path d="M455 425L455 462L535 462L535 505L462 505L462 535" fill="none" stroke="#7affb4" stroke-width="7" stroke-dasharray="14 10" stroke-linecap="round" stroke-linejoin="round"/><rect x="548" y="447" width="155" height="27" rx="8" fill="#176b49"/><text x="625" y="466" fill="white" font-size="12" font-weight="1000" text-anchor="middle">ROUTE TO EVAC CENTER</text><circle cx="455" cy="425" r="9" fill="#ffffff" stroke="#176b49" stroke-width="4"/><circle cx="462" cy="535" r="10" fill="#7affb4" stroke="#176b49" stroke-width="4"/></g>
+     <!-- moving traffic on the land-side street: a visual simulation only -->
+     <g id="trafficLayer">
+      <g>
+       <rect x="-22" y="-11" width="44" height="22" rx="6" fill="#ffd45a" stroke="#26394b" stroke-width="3"/>
+       <rect x="-12" y="-16" width="24" height="10" rx="4" fill="#9fe5f4" stroke="#26394b" stroke-width="2"/>
+       <circle cx="-12" cy="11" r="5" fill="#172638"/><circle cx="12" cy="11" r="5" fill="#172638"/>
+       <animateMotion dur="18s" repeatCount="indefinite" path="M 25 462 L 650 462"/>
+      </g>
+      <g>
+       <rect x="-18" y="-9" width="36" height="18" rx="5" fill="#ee7868" stroke="#26394b" stroke-width="2"/>
+       <circle cx="-10" cy="9" r="4" fill="#172638"/><circle cx="10" cy="9" r="4" fill="#172638"/>
+       <animateMotion dur="14s" repeatCount="indefinite" path="M 640 283 L 35 283"/>
+      </g>
+      <g font-size="18"><text x="250" y="415">🚶</text><animateTransform attributeName="transform" type="translate" values="0 0;18 0;0 0" dur="3s" repeatCount="indefinite"/></g>
+     </g>
+     <!-- facility pins -->
+     <g id="facilityLayer" font-size="23"><text x="470" y="335">✚</text><text x="635" y="335">🚓</text><text x="100" y="500">🚒</text><text x="462" y="495">🛟</text><text x="460" y="90">🏫</text><text x="650" y="90">🛒</text></g>
+     <g><rect x="18" y="545" width="230" height="28" rx="8" fill="#20384c" opacity=".88"/><text x="30" y="564" fill="#ffffff" font-size="12" font-weight="900">N ↑  •  BLOCKTOWN DEMO MAP</text></g>
+    </svg>
+   </div>
+   <div class="map-tools">
+    <button class="layer active" data-layer="hazardLayer" aria-pressed="true">⚠️ Hazards</button>
+    <button class="layer active" data-layer="routeLayer" aria-pressed="true">🟢 Sample Safe Route</button>
+    <button class="layer active" data-layer="facilityLayer" aria-pressed="true">🏥 Emergency Facilities</button>
+   </div>
+   <p id="mapMessage">The green route stays on the land-side streets and access path to the evacuation center. Moving cars and the clock are simulated.</p>
+  </div>
+  <aside class="side-card"><h3>🧭 Map Legend</h3><div class="legend">
+   <div><i class="dot" style="background:#e94b4b"></i> 🔥 Example fire-risk zone</div>
+   <div><i class="dot" style="background:#f2a735"></i> 🌊 Example flood-prone zone</div>
+   <div><i class="dot" style="background:#ed6a45"></i> ⚠️ Other example hazard area</div>
+   <div><i class="dot" style="background:#7affb4"></i> Example route to evacuation center</div>
+   <div><i class="dot" style="background:#62c99a"></i> Evacuation center</div>
+   <div><i class="dot" style="background:#596b7b"></i> Main roads and bridge</div>
+  </div><h3>🏘️ Town Facilities</h3><p>Homes • School • Market • Hospital • Police Station • Fire Station • Central Park • River • Bridge • Evacuation Center</p><div class="alert"><strong>Simulation notice:</strong> Blocktown traffic, clock, weather, hazard zones, and route are fictional demo features—not live sensors, verified hazard data, or official evacuation directions.</div></aside>
+ </div>
+</section>
+<section id="mission">
+ <div class="section-tag">WHY THIS MATTERS</div><h2>Maps can help protect lives.</h2>
+ <p class="intro">Geodetic Engineering connects accurate positioning, measurement, mapping, and spatial data. These tools help communities understand where things are and make better-informed safety plans.</p>
+ <div class="grid3">
+  <article class="info-card"><div class="icon">📍</div><h3>Know the Location</h3><p>Accurate coordinates and map features help identify homes, roads, schools, clinics, and evacuation areas.</p></article>
+  <article class="info-card"><div class="icon">⚠️</div><h3>Understand the Risk</h3><p>Hazard information can be mapped to show places that may be exposed to flooding, landslides, or other dangers.</p></article>
+  <article class="info-card"><div class="icon">🧭</div><h3>Plan Safer Movement</h3><p>Route maps can help people locate possible paths to safety when verified and used with official instructions.</p></article>
+ </div>
+</section>
+<section id="action">
+ <div class="section-tag">BE PREPARED</div><h2>Make safety a community habit.</h2>
+ <p class="intro">Preparedness starts before an emergency happens. A little knowledge can make a big difference.</p>
+ <div class="steps">
+  <div class="step"><h3>Prepare</h3><p>Know your area's official evacuation sites and keep emergency contact details accessible.</p></div>
+  <div class="step"><h3>Check</h3><p>Use updated information from your local government and trusted disaster-management authorities.</p></div>
+  <div class="step"><h3>Share</h3><p>Help family and neighbors understand safe locations and emergency procedures.</p></div>
+ </div>
+</section>
+<div class="callout"><div class="section-tag" style="color:#9eeaf5">OUR ADVOCACY</div><h2>Map for Safety. Prepare for Tomorrow.</h2><p>We advocate the responsible use of maps and geospatial information to build safer, more informed communities. A map is more than a picture of a place—it can be a tool for awareness, preparedness, and protecting lives.</p><a class="btn" href="#map">Explore the Map ↑</a></div>
+</main>
+<footer><div class="footline"></div><strong>MAP FOR SAFETY</strong><br>GEODETIC ENGINEERING • COMMUNITY ADVOCACY<br>Roblox-inspired Blocktown live simulation<br><span>Always follow verified local emergency guidance.</span></footer>
+
+
+<script>
+// Map layer controls
+ document.querySelectorAll('.map-tools [data-layer]').forEach(button=>{
+  button.addEventListener('click',()=>{
+   const layer=document.getElementById(button.dataset.layer);
+   const isVisible=layer.style.display!=='none';
+   layer.style.display=isVisible?'none':'';
+   button.classList.toggle('active',!isVisible);
+   button.setAttribute('aria-pressed',String(!isVisible));
+   const labels={hazardLayer:'Hazard zones',routeLayer:'Example route to evacuation center',facilityLayer:'Emergency facilities'};
+   document.getElementById('mapMessage').textContent=labels[button.dataset.layer]+(isVisible?' hidden.':' shown.')+' This is a fictional Blocktown demonstration.';
+  });
+ });
+ // The clock is a live browser clock; all town activity remains a visual simulation.
+ const clock=document.getElementById('townClock');
+ function updateTownClock(){if(clock) clock.textContent=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+ updateTownClock();setInterval(updateTownClock,1000);
+ const toggle=document.getElementById('simToggle');
+ let paused=false;
+ if(toggle) toggle.addEventListener('click',()=>{
+  paused=!paused;
+  const townSvg=document.getElementById('townMap');
+  if(townSvg){if(paused)townSvg.pauseAnimations();else townSvg.unpauseAnimations();}
+  const hazards=document.getElementById('hazardLayer');
+  if(hazards) hazards.style.animationPlayState=paused?'paused':'running';
+  toggle.textContent=paused?'▶ Resume':'⏸ Pause';
+ });
+ // Clickable town features show a small map note.
+ const mapNote=document.getElementById('mapMessage');
+ document.querySelectorAll('#townMap [data-place]').forEach(el=>{
+  el.style.cursor='pointer';
+  el.addEventListener('click',()=>{if(mapNote)mapNote.textContent=el.getAttribute('data-place')+' — fictional Blocktown feature for this safety-map demo.';});
+ });
+</script>
+</body>
+</html>
